@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid" style="background-color:rgb(53, 67, 173) ">
+                <div class="container">
+                    <h1 style="text-align:center; color:white; font-style: italic")>Login and Registration</h1><br><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3 style="text-align:center">Register Here! </h3>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p style="color:red">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                <div class="form-group">
+                    <form  action="/createUser", method="POST">
+                        <p>First Name: <input class="form-control" type="text" name="fname" ></p>
+                        <p>Last Name: <input class="form-control" type="text" name="lname" ></p>
+                        <p>Email: <input type="text" class="form-control" name="email" ></p>
+                        <p>Password: <input class="form-control" type="password" name="pass" ></p>
+                        <p>Password Confirmation: <input class="form-control" type="password" name="passcon" ></p>
+                        <p><input type="submit" class="btn btn-secondary" value="Register" ></p>
+                    </form>
+                </div>
+            </div>
+            <div class="col">
+                <h3 style="text-align:center">Login Here!</h3>
+                    <form action="/log_in", method="POST">
+                        <p>Email: <input class="form-control" type="text" name="email" ></p>
+                        <p>Password: <input class="form-control" type="password" name="pass" ></p>
+                        <p><input type="submit" class="btn btn-secondary" value="log in" ></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
